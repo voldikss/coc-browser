@@ -1,6 +1,6 @@
 {
   "name": "coc-browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "browser source for coc.nvim",
   "main": "index.js",
   "engines": {
@@ -34,7 +34,7 @@
         },
         "coc.browser.priority": {
           "type": "number",
-          "default": 50
+          "default": 5
         }
       }
     }
