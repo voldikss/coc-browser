@@ -21,26 +21,27 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
 
 ## Config
 
-    ```jsonc
-    "coc.browser.enable": {
-        "type": "boolean",
-        "default": true,
-        "description": "whether to enable coc-browser"
-    },
-    "coc.browser.shortcut": {
-        "type": "string",
-        "default": "BRO"
-    },
-    "coc.browser.capacity": {
-        "type": "number",
-        "default": 5,
-        "description": "temp file count to storage the words, 1~10"
-    },
-    "coc.browser.priority": {
-        "type": "number",
-        "default": 50
-    }
-    ```
+```jsonc
+"coc.browser.enable": {
+    "type": "boolean",
+    "default": true,
+    "description": "whether to enable coc-browser"
+},
+"coc.browser.shortcut": {
+    "type": "string",
+    "default": "BRO"
+},
+"coc.browser.capacity": {
+    "type": "number",
+    "default": 5,
+    "description": "temp file count to storage the words, 1~10"
+},
+"coc.browser.priority": {
+    "type": "number",
+    "default": 50
+}
+```
+
 
 ## Usage
 
