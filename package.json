@@ -1,0 +1,42 @@
+{
+  "name": "coc-browser",
+  "version": "1.0.0",
+  "description": "browser source for coc.nvim",
+  "main": "index.js",
+  "engines": {
+    "coc": "^0.0.67"
+  },
+  "keywords": [
+    "coc.nvim",
+    "browser"
+  ],
+  "author": "voldikss",
+  "repository": "https://github.com/voldikss/coc-browser",
+  "license": "MIT",
+  "homepage": "https://github.com/voldikss/coc-browser/#readme",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "coc.browser.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "whether to enable coc-browser"
+        },
+        "coc.browser.shortcut": {
+          "type": "string",
+          "default": "BRO"
+        },
+        "coc.browser.capacity": {
+          "type": "number",
+          "default": 5,
+          "description": "temp file count to storage the words, 1~10"
+        },
+        "coc.browser.priority": {
+          "type": "number",
+          "default": 50
+        }
+      }
+    }
+  }
+}
