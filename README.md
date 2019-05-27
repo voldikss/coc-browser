@@ -38,7 +38,7 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
 },
 "coc.browser.priority": {
     "type": "number",
-    "default": 50
+    "default": 5
 }
 ```
 
