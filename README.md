@@ -8,7 +8,7 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
 
 - #### Install the Chrome extension
 
-    Chrome extension [browser-source-provider]() is used to to grab words from web page and send to local http server
+    [browser-source-provider](https://chrome.google.com/webstore/detail/browser-source-provider/lkaldcfmhailjfcbapicgkdkkamanlml) is used to to grab words from web page and send to local http server
 
 
 - #### Install [coc.nvim](https://github.com/neoclide/coc.nvim)
@@ -18,6 +18,12 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
     ```
     :CocInstall coc-browser
     ```
+
+## Why
+
+- Inspired by [webcomplete.vim](https://github.com/thalesmello/webcomplete.vim), I found it pretty newfangled and ported it to Coc extension.
+
+- While playing with this extension, I found there might be a few use cases for this extension. For example, suppose you are coding after the tutorial on the web, this may help you code more quickly...
 
 ## Config
 
@@ -49,16 +55,15 @@ Then every time you open a web page or refersh the page, you get browser complet
 
 ## Note
 
-- The chrome extension is in pending review currently, so it hasn't been published in the web store yet. 
-    But if you want, you may install it in developer mode
-
 - This app only works on Google Chrome for now, to support other browsers, we need several simple extensions for them. Currently I have no chance to do that, but pull request is always welcomed
 
-- I developed this on Chrome and Linux(Ubuntu), but it should also works on Mac OS and Windows with Google Chrome browser. If not, be free to submit an issue
+- I developed this on Chrome and Linux(Ubuntu), but it should also works on Mac OS and Windows with Google Chrome browser. If not, be free to open an issue
 
 ## References
 
-Inspired by [webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
+- [coc.nvim](https://github.com/neoclide/coc.nvim)
+
+- [webcomplete.vim](https://github.com/thalesmello/webcomplete.vim)
 
 ## License
 
