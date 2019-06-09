@@ -6,6 +6,8 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
 
 ## Installation
 
+- #### Make sure your 8888 port is open, because we have to use it to communicate with browser.
+
 - #### Install the Chrome extension
 
     [browser-source-provider](https://chrome.google.com/webstore/detail/browser-source-provider/lkaldcfmhailjfcbapicgkdkkamanlml) is used to to grab words from web page and send to local http server
