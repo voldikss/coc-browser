@@ -10,16 +10,15 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
 
 - #### Install the Chrome extension
 
-    [browser-source-provider](https://chrome.google.com/webstore/detail/browser-source-provider/lkaldcfmhailjfcbapicgkdkkamanlml) is used to to grab words from web page and send to local http server
+  [browser-source-provider](https://chrome.google.com/webstore/detail/browser-source-provider/lkaldcfmhailjfcbapicgkdkkamanlml) is used to to grab words from web page and send to local http server
 
+* #### Install [coc.nvim](https://github.com/neoclide/coc.nvim)
 
-- #### Install [coc.nvim](https://github.com/neoclide/coc.nvim)
+* #### Install this source by command
 
-- #### Install this source by command
-
-    ```
-    :CocInstall coc-browser
-    ```
+  ```
+  :CocInstall coc-browser
+  ```
 
 ## Why
 
@@ -37,7 +36,7 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
 },
 "coc.browser.shortcut": {
     "type": "string",
-    "default": "BRO"
+    "default": "web"
 },
 "coc.browser.capacity": {
     "type": "number",
@@ -49,7 +48,6 @@ Web browser source for [coc.nvim](https://github.com/neoclide/coc.nvim) that com
     "default": 5
 }
 ```
-
 
 ## Usage
 

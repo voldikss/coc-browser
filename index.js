@@ -1,5 +1,5 @@
 const { sources, workspace } = require('coc.nvim')
-const http = require("http")
+const http = require('http')
 const fs = require('fs')
 const readline = require('readline')
 const util = require('util')
@@ -16,7 +16,7 @@ exports.activate = async context => {
     return
   }
 
-  let shortcut = config.get('shortcut', "BRO")
+  let shortcut = config.get('shortcut', 'web')
   let priority = config.get('priority', 50)
   let capacity = config.get('capacity', 3)
   if (capacity > 0 && capacity <= 10) {
@@ -27,7 +27,7 @@ exports.activate = async context => {
     shortcut: shortcut,
     priority: priority,
     triggerCharacters: [],
-    doComplete: async function (opt) {
+    doComplete: async function(opt) {
       let wordsFile = []
       for (let i = 0; i < FILE_COUNT; i++) {
         let file = `${__dirname}/source/words_${i}.txt`
@@ -119,7 +119,7 @@ function filterWords(words, opt) {
   return res
 }
 
-(function startServer() {
+;(function startServer() {
   let server = new http.Server()
   server.listen(8888)
   // if there is already a server running on the port
@@ -131,18 +131,18 @@ function filterWords(words, opt) {
     // todo: write to CocInfo
   })
   server.on('request', (request, response) => {
-    let words = ""
+    let words = ''
     request.on('data', data => {
       words += data
     })
     request.on('end', () => {
       saveWords(words)
     })
-    request.on('error', (e) => {
+    request.on('error', e => {
       workspace.showMessage(`request error from browser: ${e.message}`)
     })
     response.writeHead(200, { 'Content-Type': 'text/plain' })
-    response.write("response from coc-browser local server\n")
+    response.write('response from coc-browser local server\n')
     response.end()
   })
 })()
