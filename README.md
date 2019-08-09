@@ -68,3 +68,14 @@ Then every time you open a web page or refersh the page, you get browser complet
 ## License
 
 MIT
+
+## Donation
+
+- Paypal
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/voldikss)
+
+- Wechat
+<div align="center">
+	<img src="https://user-images.githubusercontent.com/20282795/62786670-a933aa00-baf5-11e9-9941-6d2551758faa.jpg" width=400>
+</div>
