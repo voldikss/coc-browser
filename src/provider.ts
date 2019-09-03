@@ -44,6 +44,6 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
       content = await readFileAsync(sourcePath)
       words.push(...content.split(/\n/))
     }
-    return words
+    return [...new Set(words)]
   }
 }
