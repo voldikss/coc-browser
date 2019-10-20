@@ -38,6 +38,10 @@ export default class Server {
     })
   }
 
+  public async stop() {
+    // TODO
+  }
+
   public async saveWords(text: string): Promise<void> {
     const { sourceDir } = this
     const sourcePath = path.join(sourceDir, `${this.counter % this.capacity}.dat`)

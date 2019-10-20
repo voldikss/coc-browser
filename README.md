@@ -1,30 +1,22 @@
 # coc-browser
 
-Web browser completion source for [coc.nvim](https://github.com/neoclide/coc.nvim)
+Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.nvim)
 
 ![](https://user-images.githubusercontent.com/20282795/58379943-f61ae080-7fdc-11e9-98f7-575214fd1a48.gif)
 
 ## Installation
 
-- **Make sure your 8888 port is open**
-
-  That port is used to communicate with browser
-
 - **Install the [browser extension](https://github.com/voldikss/browser-source-provider)**
 
-  Browser extension grabs words from web page and send them to local server
+  Browser extension is used to grab words from web page and send them to the local server
 
 - **Install [coc.nvim](https://github.com/neoclide/coc.nvim)**
 
-- **Install this source using**
+- **Install coc-browser**
 
   ```
   :CocInstall coc-browser
   ```
-
-## Why
-
-It funny and useful, sincerely.
 
 ## Config
 
@@ -49,14 +41,6 @@ It funny and useful, sincerely.
 }
 ```
 
-## Usage
-
-Then every time you open a web page or refersh the page, you get browser completion candidates in your (Neo)Vim
-
-## References
-
-- [coc.nvim](https://github.com/neoclide/coc.nvim)
-
 ## License
 
 MIT
@@ -68,6 +52,7 @@ MIT
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/voldikss)
 
 - Wechat
-  <div>
-  	<img src="https://user-images.githubusercontent.com/20282795/62786670-a933aa00-baf5-11e9-9941-6d2551758faa.jpg" width=400>
-  </div>
+
+<div>
+  <img src="https://user-images.githubusercontent.com/20282795/64410950-b3c66c80-d0be-11e9-8500-973382366324.jpg" width=150>
+</div>
