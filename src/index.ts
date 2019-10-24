@@ -16,9 +16,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
   }
 
   let capacity = config.get<number>('capacity')
+  const port = config.get<number>('port', 8888)
   if (capacity <= 0 || capacity >= 10) capacity = 5
 
-  const server = new Server(capacity, storagePath)
+  const server = new Server(capacity, port, storagePath)
   await server.start()
   const browserCompletionProvider = new BrowserCompletionProvider(server)
 
