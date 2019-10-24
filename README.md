@@ -39,6 +39,10 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
     "type": "number",
     "default": 5
 }
+"coc.browser.port": {
+    "type": "number",
+    "default": 8888
+}
 ```
 
 ## License

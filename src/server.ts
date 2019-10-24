@@ -7,12 +7,13 @@ export default class Server {
   private counter = 0
   constructor(
     private capacity: number,
-    public sourceDir: string
+    private port: number,
+    public sourceDir: string,
   ) { }
 
   public async start(): Promise<void> {
     const server = new http.Server()
-    server.listen(8888)
+    server.listen(this.port)
     // if there is already a server running on the port
     // then close this server
     server.once('error', () => {
