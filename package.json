@@ -45,6 +45,10 @@
         "coc.browser.priority": {
           "type": "number",
           "default": 5
+        },
+        "coc.browser.port": {
+          "type": "number",
+          "default": 8888
         }
       }
     }
