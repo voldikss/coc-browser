@@ -23,6 +23,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
   await server.start()
   const browserCompletionProvider = new BrowserCompletionProvider(server)
 
+  subscriptions.push(server)
+
   subscriptions.push(
     languages.registerCompletionItemProvider(
       'coc-browser',
