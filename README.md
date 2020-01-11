@@ -38,6 +38,16 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 "coc.browser.priority": {
     "type": "number",
     "default": 5
+},
+"coc.browser.minLength": {
+  "type": "number",
+  "default": 4,
+  "description": "Dismiss these words whose length is smaller than this option's value"
+},
+"coc.browser.maxLength": {
+  "type": "number",
+  "default": 20,
+  "description": "Dismiss these words whose length is larger than this option's value"
 }
 ```
 

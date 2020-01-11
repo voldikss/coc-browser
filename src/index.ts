@@ -21,7 +21,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   const server = new Server(capacity, port, storagePath)
   await server.start()
-  const browserCompletionProvider = new BrowserCompletionProvider(server)
+
+  const minLength = config.get<number>('minLength')
+  const maxLength = config.get<number>('maxLength')
+  const browserCompletionProvider = new BrowserCompletionProvider(server, minLength, maxLength)
 
   subscriptions.push(server)
 

@@ -16,7 +16,11 @@ import Server from './server'
 export class BrowserCompletionProvider implements CompletionItemProvider {
 
   private sourceDir: string
-  constructor(server: Server) {
+  constructor(
+    server: Server,
+    private minLength: number,
+    private maxLength
+  ) {
     this.sourceDir = server.sourceDir
   }
 
@@ -42,7 +46,9 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
     for (const file of files) {
       sourcePath = path.join(this.sourceDir, file)
       content = await readFileAsync(sourcePath)
-      words.push(...content.split(/\n/))
+      words.push(...content.split(/\n/).filter(
+        w => w.length >= this.minLength && w.length <= this.maxLength
+      ))
     }
     return [...new Set(words)]
   }
