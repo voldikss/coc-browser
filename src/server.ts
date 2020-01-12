@@ -43,7 +43,7 @@ export default class Server extends Dispose {
 
   public dispose(): void {
     this.server.close(() => {
-      workspace.showMessage('asdfasd')
+      // nop
     })
   }
 
