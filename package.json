@@ -1,6 +1,6 @@
 {
   "name": "coc-browser",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "browser word completion for coc.nvim",
   "main": "lib/index.js",
   "engines": {
