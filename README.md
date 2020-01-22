@@ -14,7 +14,7 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
 - **Install coc-browser**
 
-  ```
+  ```vim
   :CocInstall coc-browser
   ```
 
@@ -50,6 +50,10 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
   "description": "Dismiss these words whose length is larger than this option's value"
 }
 ```
+
+## Command
+
+- `:CocCommand browser.clearCandidates`: Clear source cache
 
 ## License
 

@@ -1,6 +1,6 @@
 import {
   CompletionContext,
-  CompletionItemProvider
+  CompletionItemProvider,
 } from 'coc.nvim'
 import {
   CompletionItem,
@@ -9,7 +9,7 @@ import {
   Position,
   TextDocument
 } from 'vscode-languageserver-protocol'
-import { readFileAsync, readdirAsync } from './util'
+import { readFileAsync, readdirAsync, rmFileAsync } from './util'
 import path from 'path'
 import Server from './server'
 
@@ -51,5 +51,13 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
       ))
     }
     return [...new Set(words)]
+  }
+
+  public async clearCandidates(): Promise<void> {
+    const sourceFiles = await readdirAsync(this.sourceDir)
+    for (const file of sourceFiles) {
+      const filepath = path.join(this.sourceDir, file)
+      await rmFileAsync(filepath)
+    }
   }
 }

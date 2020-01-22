@@ -24,6 +24,15 @@ export function readFileAsync(fullpath: string, encoding = 'utf8'): Promise<stri
   })
 }
 
+export function rmFileAsync(fullpath: string): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    fs.unlink(fullpath, err => {
+      if (err) reject(err)
+      resolve(true)
+    })
+  })
+}
+
 export function mkdirAsync(filepath: string): Promise<void> {
   return new Promise((resolve, reject) => {
     fs.mkdir(filepath, err => {
