@@ -57,7 +57,13 @@
           "description": "Dismiss these words whose length is larger than this option's value"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "title":"Clear browser completion source cache",
+        "command": "clearCandidates"
+      }
+    ]
   },
   "author": "dyzplus@gmail.com",
   "license": "MIT",
