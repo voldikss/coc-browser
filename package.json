@@ -1,6 +1,6 @@
 {
   "name": "coc-browser",
-  "version": "1.1.1",
+  "version": "1.2.4",
   "description": "browser word completion for coc.nvim",
   "main": "lib/index.js",
   "engines": {
@@ -48,10 +48,27 @@
         },
         "coc.browser.port": {
           "type": "number",
-          "default": 8888
+          "default": 8888,
+          "description": "port used to communication with browser extension"
+        },
+        "coc.browser.minLength": {
+          "type": "number",
+          "default": 4,
+          "description": "Dismiss these words whose length is smaller than this option's value"
+        },
+        "coc.browser.maxLength": {
+          "type": "number",
+          "default": 20,
+          "description": "Dismiss these words whose length is larger than this option's value"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "title":"Clear browser completion source cache",
+        "command": "clearCandidates"
+      }
+    ]
   },
   "author": "dyzplus@gmail.com",
   "license": "MIT",

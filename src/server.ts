@@ -2,28 +2,30 @@ import http from 'http'
 import path from 'path'
 import { workspace } from 'coc.nvim'
 import { writeFileAsync } from './util'
+import { Dispose } from './dispose'
 
-export default class Server {
+export default class Server extends Dispose {
   private counter = 0
+  private server
   constructor(
     private capacity: number,
     private port: number,
     public sourceDir: string,
-  ) { }
+  ) { super() }
 
   public async start(): Promise<void> {
-    const server = new http.Server()
-    server.listen(this.port)
+    this.server = new http.Server()
+    this.server.listen(this.port)
     // if there is already a server running on the port
     // then close this server
-    server.once('error', () => {
-      server.close()
+    this.server.once('error', () => {
+      this.server.close()
     })
-    server.once('listening', () => {
+    this.server.once('listening', () => {
       // todo: write to CocLog
     })
-    server.on('request', (request, response) => {
-      let words = ''
+    let words = ''
+    this.server.on('request', (request, response) => {
       request.on('data', data => {
         words += data
       })
@@ -39,8 +41,10 @@ export default class Server {
     })
   }
 
-  public async stop() {
-    // TODO
+  public dispose(): void {
+    this.server.close(() => {
+      // nop
+    })
   }
 
   public async saveWords(text: string): Promise<void> {

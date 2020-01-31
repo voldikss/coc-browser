@@ -14,7 +14,7 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
 - **Install coc-browser**
 
-  ```
+  ```vim
   :CocInstall coc-browser
   ```
 
@@ -38,25 +38,23 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 "coc.browser.priority": {
     "type": "number",
     "default": 5
-}
-"coc.browser.port": {
-    "type": "number",
-    "default": 8888
+},
+"coc.browser.minLength": {
+  "type": "number",
+  "default": 4,
+  "description": "Dismiss these words whose length is smaller than this option's value"
+},
+"coc.browser.maxLength": {
+  "type": "number",
+  "default": 20,
+  "description": "Dismiss these words whose length is larger than this option's value"
 }
 ```
+
+## Command
+
+- `:CocCommand browser.clearCandidates`: Clear source cache
 
 ## License
 
 MIT
-
-## Donation
-
-- Paypal
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/voldikss)
-
-- Wechat
-
-<div>
-  <img src="https://user-images.githubusercontent.com/20282795/64410950-b3c66c80-d0be-11e9-8500-973382366324.jpg" width=150>
-</div>

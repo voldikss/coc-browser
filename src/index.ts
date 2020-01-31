@@ -1,4 +1,4 @@
-import { ExtensionContext, languages, workspace } from 'coc.nvim'
+import { ExtensionContext, languages, workspace, commands } from 'coc.nvim'
 import { BrowserCompletionProvider } from './provider'
 import { statAsync, mkdirAsync } from './util'
 import Server from './server'
@@ -21,7 +21,21 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   const server = new Server(capacity, port, storagePath)
   await server.start()
-  const browserCompletionProvider = new BrowserCompletionProvider(server)
+
+  const minLength = config.get<number>('minLength')
+  const maxLength = config.get<number>('maxLength')
+  const browserCompletionProvider = new BrowserCompletionProvider(server, minLength, maxLength)
+
+  subscriptions.push(server)
+
+  subscriptions.push(
+    commands.registerCommand(
+      'browser.clearCandidates',
+      async () => {
+        await browserCompletionProvider.clearCandidates()
+      }
+    )
+  )
 
   subscriptions.push(
     languages.registerCompletionItemProvider(
