@@ -46,6 +46,11 @@
           "type": "number",
           "default": 5
         },
+        "coc.browser.port": {
+          "type": "number",
+          "default": 8888,
+          "description": "port used to communication with browser extension"
+        },
         "coc.browser.minLength": {
           "type": "number",
           "default": 4,
