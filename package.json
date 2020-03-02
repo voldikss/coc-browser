@@ -1,10 +1,10 @@
 {
   "name": "coc-browser",
   "version": "1.2.4",
-  "description": "browser word completion for coc.nvim",
+  "description": "browser words completion for coc.nvim",
   "main": "lib/index.js",
   "engines": {
-    "coc": "^0.0.72"
+    "coc": "^0.0.74"
   },
   "keywords": [
     "coc.nvim",
@@ -28,35 +28,35 @@
     "configuration": {
       "type": "object",
       "properties": {
-        "coc.browser.enable": {
+        "browser.enable": {
           "type": "boolean",
           "default": true,
           "description": "whether to enable coc-browser"
         },
-        "coc.browser.shortcut": {
+        "browser.shortcut": {
           "type": "string",
           "default": "WEB"
         },
-        "coc.browser.capacity": {
+        "browser.capacity": {
           "type": "number",
           "default": 5,
           "description": "count of file cache which is used to storage words, 1~10"
         },
-        "coc.browser.priority": {
+        "browser.priority": {
           "type": "number",
           "default": 5
         },
-        "coc.browser.port": {
+        "browser.port": {
           "type": "number",
           "default": 8888,
           "description": "port used to communication with browser extension"
         },
-        "coc.browser.minLength": {
+        "browser.minLength": {
           "type": "number",
           "default": 4,
           "description": "Dismiss these words whose length is smaller than this option's value"
         },
-        "coc.browser.maxLength": {
+        "browser.maxLength": {
           "type": "number",
           "default": 20,
           "description": "Dismiss these words whose length is larger than this option's value"
@@ -73,17 +73,16 @@
   "author": "dyzplus@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "@chemzqm/tsconfig": "^0.0.3",
-    "@chemzqm/tslint-config": "^1.0.18",
-    "@types/node": "^12.0.10",
-    "coc.nvim": "^0.0.73",
-    "request-light": "^0.2.4",
-    "rimraf": "^2.6.3",
-    "ts-loader": "^6.0.4",
-    "tslint": "^5.18.0",
-    "typescript": "^3.5.2",
-    "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.5"
+    "@voldikss/tsconfig": "*",
+    "@voldikss/tslint-config": "*",
+    "@types/node": "^13.7.7",
+    "coc.nvim": "^0.0.75",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^6.2.1",
+    "tslint": "^6.0.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {}
 }

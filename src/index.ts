@@ -4,7 +4,7 @@ import { statAsync, mkdirAsync } from './util'
 import Server from './server'
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  const config = workspace.getConfiguration('coc.browser')
+  const config = workspace.getConfiguration('browser')
   const isEnable = config.get<boolean>('enable', true)
   if (!isEnable) return
 
@@ -43,6 +43,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       config.get<string>('shortcut', "WEB"),
       null,
       browserCompletionProvider,
+      [],
       [],
       config.get<number>('priority', 5)
     )

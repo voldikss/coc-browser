@@ -21,30 +21,30 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 ## Config
 
 ```jsonc
-"coc.browser.enable": {
+"browser.enable": {
     "type": "boolean",
     "default": true,
     "description": "whether to enable coc-browser"
 },
-"coc.browser.shortcut": {
+"browser.shortcut": {
     "type": "string",
     "default": "web"
 },
-"coc.browser.capacity": {
+"browser.capacity": {
     "type": "number",
     "default": 5,
     "description": "temp file count to storage the words, 1~10"
 },
-"coc.browser.priority": {
+"browser.priority": {
     "type": "number",
     "default": 5
 },
-"coc.browser.minLength": {
+"browser.minLength": {
   "type": "number",
   "default": 4,
   "description": "Dismiss these words whose length is smaller than this option's value"
 },
-"coc.browser.maxLength": {
+"browser.maxLength": {
   "type": "number",
   "default": 20,
   "description": "Dismiss these words whose length is larger than this option's value"
