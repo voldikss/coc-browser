@@ -1,18 +1,21 @@
 import fs from 'fs'
-import util from 'util'
 
 export async function statAsync(filepath: string): Promise<fs.Stats | null> {
-  let stat = null
-  try {
-    stat = await util.promisify(fs.stat)(filepath)
-  } catch (e) {
-    // noop
-  }
-  return stat
+  return new Promise(resolve => {
+    fs.stat(filepath, (err, stats) => {
+      if (err) resolve(null)
+      resolve(stats)
+    })
+  })
 }
 
 export async function writeFileAsync(fullpath: string, content: string): Promise<void> {
-  await util.promisify(fs.writeFile)(fullpath, content, 'utf8')
+  return new Promise((resolve, reject) => {
+    fs.writeFile(fullpath, content, 'utf8', err => {
+      if (err) reject()
+      resolve()
+    })
+  })
 }
 
 export function readFileAsync(fullpath: string, encoding = 'utf8'): Promise<string> {
@@ -24,20 +27,20 @@ export function readFileAsync(fullpath: string, encoding = 'utf8'): Promise<stri
   })
 }
 
+export function mkdirAsync(filepath: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    fs.mkdir(filepath, err => {
+      if (err) reject(err)
+      resolve()
+    })
+  })
+}
+
 export function rmFileAsync(fullpath: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
     fs.unlink(fullpath, err => {
       if (err) reject(err)
       resolve(true)
-    })
-  })
-}
-
-export function mkdirAsync(filepath: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    fs.mkdir(filepath, err => {
-      if (err) return reject(err)
-      resolve()
     })
   })
 }
