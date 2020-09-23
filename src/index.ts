@@ -1,6 +1,6 @@
 import { ExtensionContext, languages, workspace, commands } from 'coc.nvim'
 import { BrowserCompletionProvider } from './provider'
-import { statAsync, mkdirAsync } from './util'
+import { fsStat, fsMkdir } from './util'
 import Server from './server'
 
 export async function activate(context: ExtensionContext): Promise<void> {
@@ -10,9 +10,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   const { subscriptions, storagePath } = context
 
-  const stat = await statAsync(storagePath)
+  const stat = await fsStat(storagePath)
   if (!stat || !stat.isDirectory()) {
-    await mkdirAsync(storagePath)
+    await fsMkdir(storagePath)
   }
 
   let capacity = config.get<number>('capacity')

@@ -9,7 +9,7 @@ import {
   Position,
   TextDocument
 } from 'vscode-languageserver-protocol'
-import { readFileAsync, readdirAsync, rmFileAsync } from './util'
+import { fsReadFile, fsReadDir, fsRmFile } from './util'
 import path from 'path'
 import Server from './server'
 
@@ -40,12 +40,12 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
 
   private async gatherCandidates(): Promise<string[]> {
     const words: string[] = []
-    const files = await readdirAsync(this.sourceDir)
+    const files = await fsReadDir(this.sourceDir)
     let sourcePath: string
     let content: string
     for (const file of files) {
       sourcePath = path.join(this.sourceDir, file)
-      content = await readFileAsync(sourcePath)
+      content = await fsReadFile(sourcePath)
       words.push(...content.split(/\n/).filter(
         w => w.length >= this.minLength && w.length <= this.maxLength
       ))
@@ -54,10 +54,10 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
   }
 
   public async clearCandidates(): Promise<void> {
-    const sourceFiles = await readdirAsync(this.sourceDir)
+    const sourceFiles = await fsReadDir(this.sourceDir)
     for (const file of sourceFiles) {
       const filepath = path.join(this.sourceDir, file)
-      await rmFileAsync(filepath)
+      await fsRmFile(filepath)
     }
   }
 }

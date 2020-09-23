@@ -1,7 +1,7 @@
 import http from 'http'
 import path from 'path'
 import { workspace } from 'coc.nvim'
-import { writeFileAsync } from './util'
+import { fsWriteFile } from './util'
 import { Dispose } from './dispose'
 
 export default class Server extends Dispose {
@@ -50,7 +50,7 @@ export default class Server extends Dispose {
   public async saveWords(text: string): Promise<void> {
     const { sourceDir } = this
     const sourcePath = path.join(sourceDir, `${this.counter % this.capacity}.dat`)
-    await writeFileAsync(sourcePath, text)
+    await fsWriteFile(sourcePath, text)
     this.counter++
   }
 }
