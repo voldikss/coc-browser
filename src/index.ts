@@ -11,7 +11,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   const { subscriptions, storagePath } = context
 
   const stat = await fsStat(storagePath)
-  if (!stat || !stat.isDirectory()) {
+  if (!(stat?.isDirectory())) {
     await fsMkdir(storagePath)
   }
 
