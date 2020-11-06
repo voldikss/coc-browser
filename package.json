@@ -17,7 +17,7 @@
     "watch": "webpack --watch",
     "build": "webpack",
     "prepare": "npx npm-run-all clean build",
-    "test": "jest --forceExit"
+    "lint": "eslint . --ext .ts"
   },
   "activationEvents": [
     "*"
@@ -49,7 +49,7 @@
         "browser.port": {
           "type": "number",
           "default": 8888,
-          "description": "port used to communication with browser extension"
+          "description": "port used to communication with browser extension, this won't take effect for now, because the update for the chrome extension was denied due to google chrome's security policy"
         },
         "browser.minLength": {
           "type": "number",
@@ -65,7 +65,7 @@
     },
     "commands": [
       {
-        "title":"Clear browser completion source cache",
+        "title": "Clear browser completion source cache",
         "command": "clearCandidates"
       }
     ]
@@ -73,16 +73,16 @@
   "author": "dyzplus@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "@voldikss/tsconfig": "*",
-    "@voldikss/tslint-config": "*",
     "@types/node": "^13.7.7",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "@voldikss/tsconfig": "*",
     "coc.nvim": "^0.0.75",
+    "eslint": "^7.12.1",
     "rimraf": "^3.0.2",
     "ts-loader": "^6.2.1",
-    "tslint": "^6.0.0",
     "typescript": "^3.8.3",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {}
+  }
 }

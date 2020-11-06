@@ -49,7 +49,7 @@ export default class Server extends Dispose {
 
   public async saveWords(text: string): Promise<void> {
     const { sourceDir } = this
-    const sourcePath = path.join(sourceDir, `${this.counter % this.capacity}.dat`)
+    const sourcePath = path.join(sourceDir, `${this.counter % this.capacity}`)
     await fsWriteFile(sourcePath, text)
     this.counter++
   }

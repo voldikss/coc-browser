@@ -1,0 +1,16 @@
+{
+  "name": "extension",
+  "version": "1.0.0",
+  "description": "Browser word completion source extension, developed for [coc-browser](https://github.com/voldikss/coc-browser) and [vscode-browser-completion](https://github.com/voldikss/vscode-browser-completion)",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chrome": "0.0.126"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

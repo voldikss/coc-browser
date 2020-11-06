@@ -39,6 +39,13 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
     "type": "number",
     "default": 5
 },
+"browser.port": {
+  "type": "number",
+  "default": 8888,
+  "description": "port used to communication with browser extension, this
+  won't take effect for now, because the update for the chrome extension was
+  denied due to google chrome's security policy"
+},
 "browser.minLength": {
   "type": "number",
   "default": 4,

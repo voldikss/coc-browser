@@ -9,7 +9,7 @@ export class Dispose implements Disposable {
   }
 
   public dispose(): void {
-    if (this.subscriptions.length) {
+    if (this.subscriptions.length > 0) {
       this.subscriptions.forEach(subs => {
         subs.dispose()
       })
