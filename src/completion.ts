@@ -1,12 +1,12 @@
 import {
-  CompletionContext,
   CompletionItemProvider,
+  workspace,
 } from 'coc.nvim'
 import {
   CompletionItem,
   CompletionItemKind,
-  CancellationToken,
   Position,
+  Range,
   TextDocument
 } from 'vscode-languageserver-protocol'
 import { fsReadFile, fsReadDir, fsRmFile } from './util'
@@ -19,26 +19,31 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
   constructor(
     server: Server,
     private minLength: number,
-    private maxLength
-  ) {
-    this.sourceDir = server.sourceDir
+    private maxLength,
+    private patterns
+  ) { this.sourceDir = server.sourceDir }
+
+  public async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionItem[]> {
+    const { languageId, uri } = document
+
+    const patterns = this.patterns['*'] || this.patterns[languageId]
+    if (!patterns) return []
+
+    const doc = workspace.getDocument(uri)
+    if (!doc) return []
+
+    const wordRange = doc.getWordRangeAtPosition(Position.create(position.line, position.character - 1))
+    if (!wordRange) return []
+
+    const word = document.getText(wordRange)
+    const linePre = document.getText(Range.create(Position.create(position.line, 0), position))
+    if (!patterns.length || patterns.some(p => new RegExp(p).test(linePre))) {
+      return this.gatherCandidates(word)
+    }
+    return []
   }
 
-  public async provideCompletionItems(
-    _document: TextDocument,
-    _position: Position,
-    _token: CancellationToken,
-    _context: CompletionContext,
-  ): Promise<CompletionItem[]> {
-    const words = await this.gatherCandidates()
-    return words.map<CompletionItem>(word => ({
-      label: word,
-      kind: CompletionItemKind.Text,
-      insertText: word,
-    }))
-  }
-
-  private async gatherCandidates(): Promise<string[]> {
+  private async gatherCandidates(word): Promise<CompletionItem[]> {
     const words: string[] = []
     const files = await fsReadDir(this.sourceDir)
     let sourcePath: string
@@ -51,6 +56,12 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
       ))
     }
     return [...new Set(words)]
+      .filter(w => new RegExp(word).test(w))
+      .map<CompletionItem>(word => ({
+        label: word,
+        kind: CompletionItemKind.Text,
+        insertText: word,
+      }))
   }
 
   public async clearCandidates(): Promise<void> {

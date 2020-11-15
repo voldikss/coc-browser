@@ -20,47 +20,62 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
 ## Config
 
-```jsonc
-"browser.enable": {
-    "type": "boolean",
-    "default": true,
-    "description": "whether to enable coc-browser"
-},
-"browser.shortcut": {
-    "type": "string",
-    "default": "web"
-},
-"browser.capacity": {
-    "type": "number",
-    "default": 5,
-    "description": "temp file count to storage the words, 1~10"
-},
-"browser.priority": {
-    "type": "number",
-    "default": 5
-},
-"browser.port": {
-  "type": "number",
-  "default": 8888,
-  "description": "port used to communication with browser extension, this
+- `browser.enable`:
+  default: `true`
+
+  whether to enable coc-browser
+
+- `browser.shortcut`:
+  default: `"web"`
+
+- `browser.capacity`:
+  default: `5`
+
+  temp file count to storage the words, 1~10.
+
+- `browser.priority`:
+  default: `5`
+
+- `browser.patterns`: default: `{"*": []}`
+
+  Javascript style regex patterns that defines the cursor position to enable autocomplete, empty array `[]` means to enable for whole buffer.
+
+  For example, in order to enable completion only if the cursor is in the
+  comment region in javascript file, set this option as follows
+
+  ```jsonc
+  "browser.patterns": {
+    "javascript": [
+      "^\\s*\\/\\/",
+      "^\\s*\\/\\*",
+      "^\\s*\\*"
+    ]
+  }
+  ```
+
+  The `*` in the default value `{"*": []}` means to enable autocomplete for all
+  filetypes.
+
+- `browser.port`:
+  default: `8888`
+
+  port used to communication with browser extension, this
   won't take effect for now, because the update for the chrome extension was
-  denied due to google chrome's security policy"
-},
-"browser.minLength": {
-  "type": "number",
-  "default": 4,
-  "description": "Dismiss these words whose length is smaller than this option's value"
-},
-"browser.maxLength": {
-  "type": "number",
-  "default": 20,
-  "description": "Dismiss these words whose length is larger than this option's value"
-}
-```
+  denied due to google chrome's security policy.
+
+- `browser.minLength`:
+  default: `4`
+
+  Dismiss these words whose length is smaller than this option's value
+
+- `browser.maxLength`:
+  default: `20`,
+
+  Dismiss these words whose length is larger than this option's value.
 
 ## Command
 
-- `:CocCommand browser.clearCandidates`: Clear source cache
+- `:CocCommand browser.clearCandidates`: Clear completion source cache
 
 ## License
 

@@ -46,6 +46,12 @@
           "type": "number",
           "default": 5
         },
+        "browser.patterns": {
+          "type": "object",
+          "default": {
+            "*": []
+          }
+        },
         "browser.port": {
           "type": "number",
           "default": 8888,

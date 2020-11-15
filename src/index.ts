@@ -1,5 +1,5 @@
 import { ExtensionContext, languages, workspace, commands } from 'coc.nvim'
-import { BrowserCompletionProvider } from './provider'
+import { BrowserCompletionProvider } from './completion'
 import { fsStat, fsMkdir } from './util'
 import Server from './server'
 
@@ -22,9 +22,12 @@ export async function activate(context: ExtensionContext): Promise<void> {
   const server = new Server(capacity, port, storagePath)
   await server.start()
 
-  const minLength = config.get<number>('minLength')
-  const maxLength = config.get<number>('maxLength')
-  const browserCompletionProvider = new BrowserCompletionProvider(server, minLength, maxLength)
+  const browserCompletionProvider = new BrowserCompletionProvider(
+    server,
+    config.get('minLength'),
+    config.get('maxLength'),
+    config.get('patterns')
+  )
 
   subscriptions.push(server)
 
