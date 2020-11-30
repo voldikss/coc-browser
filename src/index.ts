@@ -47,8 +47,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
       null,
       browserCompletionProvider,
       [],
+      config.get<number>('priority', 5),
       [],
-      config.get<number>('priority', 5)
     )
   )
 }
