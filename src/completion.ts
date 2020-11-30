@@ -44,24 +44,29 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
   }
 
   private async gatherCandidates(word): Promise<CompletionItem[]> {
-    const words: string[] = []
     const files = await fsReadDir(this.sourceDir)
-    let sourcePath: string
-    let content: string
-    for (const file of files) {
-      sourcePath = path.join(this.sourceDir, file)
-      content = await fsReadFile(sourcePath)
-      words.push(...content.split(/\n/).filter(
-        w => w.length >= this.minLength && w.length <= this.maxLength
-      ))
-    }
-    return [...new Set(words)]
-      .filter(w => new RegExp(word).test(w))
-      .map<CompletionItem>(word => ({
-        label: word,
-        kind: CompletionItemKind.Text,
-        insertText: word,
+    return new Promise((resolve, reject) => {
+      Promise.all(files.map(f => {
+        let sourcePath = path.join(this.sourceDir, f)
+        return fsReadFile(sourcePath)
+          .then(content => content
+            .split(/\n/)
+            .filter(w => w.length >= this.minLength && w.length <= this.maxLength))
+          .catch(_ => [])
       }))
+        .then(results => {
+          let words: string[] = Array.prototype.concat.apply([], results)
+          let candidates = [...new Set(words)]
+            .filter(w => new RegExp(word).test(w))
+            .map<CompletionItem>(word => ({
+              label: word,
+              kind: CompletionItemKind.Text,
+              insertText: word,
+            }))
+          resolve(candidates)
+        })
+        .catch(e => reject(e))
+    })
   }
 
   public async clearCandidates(): Promise<void> {
