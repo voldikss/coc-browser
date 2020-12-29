@@ -28,11 +28,6 @@
     "configuration": {
       "type": "object",
       "properties": {
-        "browser.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "whether to enable coc-browser"
-        },
         "browser.shortcut": {
           "type": "string",
           "default": "WEB"
@@ -72,13 +67,14 @@
     "commands": [
       {
         "title": "Clear browser completion source cache",
-        "command": "clearCandidates"
+        "command": "clearCache"
       }
     ]
   },
   "author": "dyzplus@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "@types/chrome": "0.0.126",
     "@types/node": "^14.14.10",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
     "@typescript-eslint/parser": "^4.8.2",

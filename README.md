@@ -20,11 +20,6 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
 ## Config
 
-- `browser.enable`:
-  default: `true`
-
-  whether to enable coc-browser
-
 - `browser.shortcut`:
   default: `"web"`
 
@@ -75,7 +70,7 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
 ## Command
 
-- `:CocCommand browser.clearCandidates`: Clear completion source cache
+- `:CocCommand browser.clearCache`: Clear completion source cache
 
 ## License
 

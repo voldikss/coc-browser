@@ -4,20 +4,17 @@ import { fsStat, fsMkdir } from './util'
 import Server from './server'
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  const config = workspace.getConfiguration('browser')
-  const isEnable = config.get<boolean>('enable', true)
-  if (!isEnable) return
-
   const { subscriptions, storagePath } = context
+
+  const config = workspace.getConfiguration('browser')
 
   const stat = await fsStat(storagePath)
   if (!(stat?.isDirectory())) {
     await fsMkdir(storagePath)
   }
 
-  let capacity = config.get<number>('capacity')
+  const capacity = config.get<number>('capacity')
   const port = config.get<number>('port', 8888)
-  if (capacity <= 0 || capacity >= 10) capacity = 5
 
   const server = new Server(capacity, port, storagePath)
   await server.start()
@@ -33,9 +30,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   subscriptions.push(
     commands.registerCommand(
-      'browser.clearCandidates',
+      'browser.clearCache',
       async () => {
-        await browserCompletionProvider.clearCandidates()
+        await browserCompletionProvider.clearCache()
       }
     )
   )

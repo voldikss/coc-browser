@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>browser-source-provider Options</title>
-  </head>
-  <style type="text/css">
-    body {
-      padding: 2pt;
-      margin: 1pt;
-      width: 100pt;
-    }
-    #title {
-      text-align: center;
-      font-weight: bold;
-    }
+<style type="text/css">
     #port {
-      width: 50pt;
-      margin: 3pt;
+        width: 50pt;
     }
-    #save {
-      float: right;
-      margin: 3pt;
-    }
-  </style>
-  <body>
-    <div id="title">Port</div>
-    <input id="port" type="text" />
-    <button id="save">Save</button>
+</style>
+
+<body>
+    <table border="0">
+        <tr>
+            <td>
+                <input id="port" type="text" />
+            </td>
+            <td>
+                <input id="save" type="button" value="save port" />
+            </td>
+        </tr>
+    </table>
+
     <script src="popup.js"></script>
-  </body>
+</body>
+
 </html>
