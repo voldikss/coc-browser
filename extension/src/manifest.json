@@ -4,6 +4,11 @@
   "version": "1.0.2",
   "description": "browser words completion source for coc-browser",
   "author": "voldikss",
+  "icons": {
+    "16": "bcp.png",
+    "48": "bcp.png",
+    "128": "bcp.png"
+  },
   "browser_action": {
     "default_popup": "popup.html",
     "default_title": "browser-source-provider"
