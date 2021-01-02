@@ -5,34 +5,31 @@ import Server from './server'
 
 export async function activate(context: ExtensionContext): Promise<void> {
   const { subscriptions, storagePath } = context
-
-  const config = workspace.getConfiguration('browser')
-
   const stat = await fsStat(storagePath)
   if (!(stat?.isDirectory())) {
     await fsMkdir(storagePath)
   }
 
-  const capacity = config.get<number>('capacity')
-  const port = config.get<number>('port', 8888)
+  const config = workspace.getConfiguration('browser')
 
-  const server = new Server(capacity, port, storagePath)
+  const server = new Server(
+    config.get<number>('port'),
+    storagePath
+  )
   await server.start()
+  subscriptions.push(server)
 
   const browserCompletionProvider = new BrowserCompletionProvider(
     server,
-    config.get('minLength'),
-    config.get('maxLength'),
-    config.get('patterns')
+    config.get<number[]>('filterLength'),
+    config.get<Record<string, string[]>>('patterns')
   )
-
-  subscriptions.push(server)
 
   subscriptions.push(
     commands.registerCommand(
-      'browser.clearCache',
+      'browser.cleanCache',
       async () => {
-        await browserCompletionProvider.clearCache()
+        await browserCompletionProvider.cleanCache()
       }
     )
   )
@@ -40,11 +37,11 @@ export async function activate(context: ExtensionContext): Promise<void> {
   subscriptions.push(
     languages.registerCompletionItemProvider(
       'coc-browser',
-      config.get<string>('shortcut', "WEB"),
+      config.get<string>('shortcut'),
       null,
       browserCompletionProvider,
       [],
-      config.get<number>('priority', 5),
+      config.get<number>('priority'),
       [],
     )
   )

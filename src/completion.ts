@@ -1,29 +1,26 @@
 import {
-  CompletionItemProvider,
-  workspace,
-} from 'coc.nvim'
-import {
   CompletionItem,
   CompletionItemKind,
+  CompletionItemProvider,
   Position,
+  ProviderResult,
   Range,
-  TextDocument
-} from 'vscode-languageserver-protocol'
+  TextDocument,
+  workspace,
+} from 'coc.nvim'
 import { fsReadFile, fsReadDir, fsRmFile } from './util'
 import path from 'path'
 import Server from './server'
 
 export class BrowserCompletionProvider implements CompletionItemProvider {
-
   private sourceDir: string
   constructor(
     server: Server,
-    private minLength: number,
-    private maxLength,
-    private patterns
-  ) { this.sourceDir = server.sourceDir }
+    private filterLength: number[],
+    private patterns: Record<string, string[]>
+  ) { this.sourceDir = server.cacheDir }
 
-  public async provideCompletionItems(document: TextDocument, position: Position): Promise<CompletionItem[]> {
+  provideCompletionItems(document: TextDocument, position: Position): ProviderResult<CompletionItem[]> {
     const { languageId, uri } = document
 
     const patterns = this.patterns['*'] || this.patterns[languageId]
@@ -47,16 +44,16 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
     const files = await fsReadDir(this.sourceDir)
     return new Promise((resolve, reject) => {
       Promise.all(files.map(f => {
-        let sourcePath = path.join(this.sourceDir, f)
+        const sourcePath = path.join(this.sourceDir, f)
         return fsReadFile(sourcePath)
           .then(content => content
             .split(/\n/)
-            .filter(w => w.length >= this.minLength && w.length <= this.maxLength))
-          .catch(_ => [])
+            .filter(w => w.length >= this.filterLength[0] && w.length <= this.filterLength[1]))
+          .catch(e => reject(e))
       }))
         .then(results => {
-          let words: string[] = Array.prototype.concat.apply([], results)
-          let candidates = [...new Set(words)]
+          const words: string[] = Array.prototype.concat.apply([], results)
+          const candidates = [...new Set(words)]
             .filter(w => new RegExp(word).test(w))
             .map<CompletionItem>(word => ({
               label: word,
@@ -69,7 +66,7 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
     })
   }
 
-  public async clearCache(): Promise<void> {
+  public async cleanCache(): Promise<void> {
     const sourceFiles = await fsReadDir(this.sourceDir)
     for (const file of sourceFiles) {
       const filepath = path.join(this.sourceDir, file)

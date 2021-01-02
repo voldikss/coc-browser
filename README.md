@@ -23,11 +23,6 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 - `browser.shortcut`:
   default: `"web"`
 
-- `browser.capacity`:
-  default: `5`
-
-  temp file count to storage the words, 1~10.
-
 - `browser.priority`:
   default: `5`
 
@@ -58,19 +53,15 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
   won't take effect for now, because the update for the chrome extension was
   denied due to google chrome's security policy.
 
-- `browser.minLength`:
-  default: `4`
+- `browser.filterLength`:
+  default: `[5, 20]`
 
-  Dismiss these words whose length is smaller than this option's value
-
-- `browser.maxLength`:
-  default: `20`,
-
-  Dismiss these words whose length is larger than this option's value.
+  Array of 2 numbers. Candidates whose length is not in the range (closed
+  interval) will be removed.
 
 ## Command
 
-- `:CocCommand browser.clearCache`: Clear completion source cache
+- `:CocCommand browser.cleanCache`: Clear completion source cache
 
 ## License
 
