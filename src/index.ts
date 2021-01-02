@@ -27,9 +27,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   subscriptions.push(
     commands.registerCommand(
-      'browser.cleanCache',
+      'browser.clearCache',
       async () => {
-        await browserCompletionProvider.cleanCache()
+        await browserCompletionProvider.clearCache()
       }
     )
   )

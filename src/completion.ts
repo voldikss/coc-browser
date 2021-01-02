@@ -66,7 +66,7 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
     })
   }
 
-  public async cleanCache(): Promise<void> {
+  public async clearCache(): Promise<void> {
     const sourceFiles = await fsReadDir(this.sourceDir)
     for (const file of sourceFiles) {
       const filepath = path.join(this.sourceDir, file)

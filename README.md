@@ -1,5 +1,8 @@
 # coc-browser
 
+![publish](https://github.com/voldikss/coc-browser/workflows/publish/badge.svg)
+[![npm version](https://badge.fury.io/js/coc-browser.svg)](https://badge.fury.io/js/coc-browser)
+
 Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.nvim)
 
 ![](https://user-images.githubusercontent.com/20282795/58379943-f61ae080-7fdc-11e9-98f7-575214fd1a48.gif)
@@ -61,7 +64,7 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
 ## Command
 
-- `:CocCommand browser.cleanCache`: Clear completion source cache
+- `:CocCommand browser.clearCache`: Clear completion source cache
 
 ## License
 
