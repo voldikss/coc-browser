@@ -5,11 +5,11 @@
 
 Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.nvim)
 
-![](https://user-images.githubusercontent.com/20282795/58379943-f61ae080-7fdc-11e9-98f7-575214fd1a48.gif)
+![](https://user-images.githubusercontent.com/20282795/103974806-88212e00-51ad-11eb-9b22-61f230c2ab9e.gif)
 
 ## Installation
 
-- **Install the [browser extension](https://github.com/voldikss/browser-source-provider)**
+- **Install the [browser extension](https://chrome.google.com/webstore/detail/browser-source-provider/lkaldcfmhailjfcbapicgkdkkamanlml?utm_source=chrome-ntp-icon)**
 
   Browser extension is used to grab words from web page and send them to the local server
 
@@ -52,15 +52,13 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 - `browser.port`:
   default: `8888`
 
-  port used to communication with browser extension, this
-  won't take effect for now, because the update for the chrome extension was
-  denied due to google chrome's security policy.
+  Port used to transfer words from browser extension to local server
 
 - `browser.filterLength`:
   default: `[5, 20]`
 
-  Array of 2 numbers. Candidates whose length is not in the range (closed
-  interval) will be removed.
+  Array of 2 numbers. Candidates whose length is not in the closed interval
+  will be dismissed
 
 ## Command
 
