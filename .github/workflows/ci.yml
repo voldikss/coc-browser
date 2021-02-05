@@ -14,7 +14,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Build Package
         run: |
-          npm install -g json
+          npm install -g json ts-node
           npm install
       - name: Publish
         env:
