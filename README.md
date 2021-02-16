@@ -54,12 +54,6 @@ Browser words completion source for [coc.nvim](https://github.com/neoclide/coc.n
 
   Port used to transfer words from browser extension to local server
 
-- `browser.filterLength`:
-  default: `[5, 20]`
-
-  Array of 2 numbers. Candidates whose length is not in the closed interval
-  will be dismissed
-
 ## Command
 
 - `:CocCommand browser.clearCache`: Clear completion source cache

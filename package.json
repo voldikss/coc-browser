@@ -50,14 +50,6 @@
           "type": "number",
           "default": 8888,
           "description": "Port used to transfer words from browser extension to local server"
-        },
-        "browser.filterLength": {
-          "type": "array",
-          "default": [
-            5,
-            20
-          ],
-          "description": "Array of 2 numbers. Candidates whose length is not in the range (closed interval) will be dismissed"
         }
       }
     },

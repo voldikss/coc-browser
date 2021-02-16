@@ -15,9 +15,5 @@ export interface Browser {
    * Port used to transfer words from browser extension to local server
    */
   'browser.port'?: number;
-  /**
-   * Array of 2 numbers. Candidates whose length is not in the range (closed interval) will be dismissed
-   */
-  'browser.filterLength'?: unknown[];
   [k: string]: unknown;
 }

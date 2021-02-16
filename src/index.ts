@@ -21,7 +21,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   const browserCompletionProvider = new BrowserCompletionProvider(
     server,
-    config.get<number[]>('filterLength'),
     config.get<Record<string, string[]>>('patterns')
   )
 

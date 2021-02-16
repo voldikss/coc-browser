@@ -16,7 +16,6 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
   private sourceDir: string
   constructor(
     server: Server,
-    private filterLength: number[],
     private patterns: Record<string, string[]>
   ) { this.sourceDir = server.cacheDir }
 
@@ -47,8 +46,7 @@ export class BrowserCompletionProvider implements CompletionItemProvider {
         const sourcePath = path.join(this.sourceDir, f)
         return fsReadFile(sourcePath)
           .then(content => content
-            .split(/\n/)
-            .filter(w => w.length >= this.filterLength[0] && w.length <= this.filterLength[1]))
+            .split(/\n/))
           .catch(e => reject(e))
       }))
         .then(results => {
