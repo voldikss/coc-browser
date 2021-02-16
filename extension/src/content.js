@@ -15,7 +15,9 @@ chrome.storage.sync.get(['port'], (items) => {
       // console.log("failed to send to coc-browser")
     }
   }
-  let text = document.body.innerText.match(/\w+/g)
+  let text = document.body.innerText
+    .match(/\w+/g)
+    .filter((word) => word.length >= 5 && word.length <= 20)
   text = [...new Set(text)].join('\n')
   xhr.send(text)
 })
