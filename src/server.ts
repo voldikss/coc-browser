@@ -30,6 +30,7 @@ export default class Server extends Dispose {
       })
       request.on('end', async () => {
         await this.saveWords(words)
+        words = '' // NOTE: Important! OMG!
       })
       request.on('error', e => {
         window.showMessage(`request error from browser: ${e.message}`)
